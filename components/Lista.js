@@ -6,8 +6,8 @@ const Lista = ({ fornecedores }) => {
 			<Text style={styles.title}>Lista:</Text>
 
 			{fornecedores.map((fornecedor, index) => (
-				<View key={index} style={styles.fornecedorContainer}>
-					<Text style={styles.nomeFornecedor}>Nome: {fornecedor.nome}</Text>
+				<View key={index} style={styles.containerFornecedor}>
+					<Text style={styles.nome}>Nome: {fornecedor.nome}</Text>
 					<Text>Contato: {fornecedor.contato}</Text>
 					{fornecedor.imagem && <Image source={{ uri: fornecedor.imagem }} style={styles.imagemFornecedor} />}
 				</View>
@@ -32,12 +32,12 @@ const styles = {
 		borderWidth: 1,
 		borderRadius: 5,
 	},
-	fornecedorContainer: {
+	containerFornecedor: {
 		marginBottom: 20,
         borderWidth: 2,
         padding: 15,
 	},
-	nomeFornecedor: {
+	nome: {
 		fontSize: 20,
 		fontWeight: "bold",
 	},
