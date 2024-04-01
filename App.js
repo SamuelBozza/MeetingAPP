@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import Cadastro from "./components/Cadastro";
+import Lista from "./components/Lista";
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	const [fornecedores, setFornecedores] = useState([]);
+
+	const handleCadastro = (novoFornecedor) => {
+		setFornecedores([...fornecedores, novoFornecedor]);
+	};
+
+	return (
+		<ScrollView contentContainerStyle={styles.scrollContainer}>
+			<View style={styles.container}>
+				<Cadastro onCadastroSubmit={handleCadastro} />
+				<Lista fornecedores={fornecedores} />
+				<StatusBar style="auto" />
+			</View>
+		</ScrollView>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	scrollContainer: {
+		flexGrow: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	container: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 });
